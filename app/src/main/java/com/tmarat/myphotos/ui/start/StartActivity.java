@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.tmarat.myphotos.App;
+import com.tmarat.myphotos.ui.start.di.StartActivityComponent;
 import javax.inject.Inject;
 
 public class StartActivity extends AppCompatActivity {
+
+  private StartActivityComponent startActivityComponent;
 
   @Inject StartView view;
   @Inject StartPresenter presenter;
@@ -16,8 +19,7 @@ public class StartActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    ((App)getApplication())
-        .plusStartActivityComponent(this)
+    ((App) getApplication()).plusStartActivityComponent(this)
         .inject(this);
 
     setContentView(view.getLayout());
@@ -35,11 +37,14 @@ public class StartActivity extends AppCompatActivity {
     return true;
   }
 
-
-
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     //todo if need
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override protected void onDestroy() {
+    ((App) getApplication()).clearStartActivityComponent();
+    super.onDestroy();
   }
 }

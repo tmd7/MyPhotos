@@ -1,10 +1,9 @@
 package com.tmarat.myphotos.ui.start.di.modules;
 
-import com.tmarat.myphotos.ui.start.StartActivity;
 import com.tmarat.myphotos.ui.start.StartPresenter;
 import com.tmarat.myphotos.ui.start.StartView;
 import com.tmarat.myphotos.ui.start.StartWireframe;
-import com.tmarat.myphotos.ui.start.di.scope.Activity;
+import com.tmarat.myphotos.ui.start.di.scope.StartActivity;
 import com.tmarat.myphotos.ui.start.impl.DefaultStartPresenter;
 import com.tmarat.myphotos.ui.start.impl.DefaultStartView;
 import com.tmarat.myphotos.ui.start.impl.DefaultStartWireframe;
@@ -14,23 +13,23 @@ import dagger.Provides;
 @Module
 public class StartActivityModule {
 
-  private StartActivity activity;
+  private com.tmarat.myphotos.ui.start.StartActivity activity;
 
-  public StartActivityModule(StartActivity activity) {
+  public StartActivityModule(com.tmarat.myphotos.ui.start.StartActivity activity) {
     this.activity = activity;
   }
 
-  @Activity
+  @StartActivity
   @Provides StartView provideStartView() {
     return new DefaultStartView();
   }
 
-  @Activity
+  @StartActivity
   @Provides StartPresenter provideStartPresenter(StartView view, StartWireframe wireframe) {
     return new DefaultStartPresenter(view, wireframe);
   }
 
-  @Activity
+  @StartActivity
   @Provides StartWireframe provideStartWireframe() {
     return new DefaultStartWireframe(activity);
   }

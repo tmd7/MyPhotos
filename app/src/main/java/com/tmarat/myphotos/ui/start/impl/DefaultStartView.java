@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.tmarat.myphotos.R;
 import com.tmarat.myphotos.ui.start.StartActivity;
 import com.tmarat.myphotos.ui.start.StartClickHandler;
 import com.tmarat.myphotos.ui.start.StartView;
+import io.reactivex.Observable;
 
 public class DefaultStartView implements StartView,
     BottomNavigationView.OnNavigationItemSelectedListener {

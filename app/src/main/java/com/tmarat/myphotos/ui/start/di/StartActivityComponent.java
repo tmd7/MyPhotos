@@ -1,13 +1,16 @@
 package com.tmarat.myphotos.ui.start.di;
 
-import com.tmarat.myphotos.ui.start.StartActivity;
+import com.tmarat.myphotos.ui.local.di.LocalFragmentComponent;
+import com.tmarat.myphotos.ui.local.di.modules.LocalFragmentModule;
 import com.tmarat.myphotos.ui.start.di.modules.StartActivityModule;
-import com.tmarat.myphotos.ui.start.di.scope.Activity;
+import com.tmarat.myphotos.ui.start.di.scope.StartActivity;
 import dagger.Subcomponent;
 
-@Activity
+@StartActivity
 @Subcomponent(modules = { StartActivityModule.class })
 public interface StartActivityComponent {
 
-  void inject(StartActivity activity);
+  LocalFragmentComponent plusLocalFragmentComponent(LocalFragmentModule module);
+
+  void inject(com.tmarat.myphotos.ui.start.StartActivity activity);
 }
